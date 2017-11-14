@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN" monitorInterval="60">
+    <properties>
+        <property name="LOG_HOME">${sys:catalina.home}/server</property>
+        <property name="FileName">mylog.log</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %highlight{%-5p}{FATAL=Blinking bright red, ERROR=Bright red, WARN=Red, INFO=Blue, DEBUG=black, TRACE=Normal} %logger{36} - %m%n"/>
+        </Console>
+
+        <File name="File" fileName="${FileName}">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5p %class{2} - %m%n"/>
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </File>
+
+        <RollingRandomAccessFile name="roll_access_file" fileName="${LOG_HOME}/logs/${FileName}" filePattern="${LOG_HOME}/logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern></pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.xyz.Log4j2Test01" level="info" additivity="true">
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="roll_access_file"/>
+        </Logger>
+
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
