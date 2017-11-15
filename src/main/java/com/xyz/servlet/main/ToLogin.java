@@ -14,6 +14,6 @@ public class ToLogin extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/html/login.html").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/html/main/login.html").forward(request, response);
     }
 }
