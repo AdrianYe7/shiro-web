@@ -1,4 +1,4 @@
-package com.xyz.servlet.main;
+package com.xyz.servlet.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -6,14 +6,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import static com.xyz.common.URLPath.getUrl;
 
-@WebServlet(name = "ToLogin", value = "/toLogin")
-public class ToLogin extends HttpServlet {
+@WebServlet(name = "ToRegister", value = "/toRegister")
+public class ToRegister extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
+        request.getRequestDispatcher(getUrl("user/register"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/html/main/login.html").forward(request, response);
+        this.doGet(request, response);
     }
 }

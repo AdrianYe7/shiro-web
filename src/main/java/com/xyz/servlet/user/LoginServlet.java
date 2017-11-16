@@ -1,4 +1,4 @@
-package com.xyz.servlet.main;
+package com.xyz.servlet.user;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", value = "/login")
+@WebServlet(name = "Login", value = "/login")
 public class LoginServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServlet.class);
 
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         if(subject.isAuthenticated()) {
-            request.getRequestDispatcher(getUrl("main/index")).forward(request, response);
+            request.getRequestDispatcher(getUrl("user/index")).forward(request, response);
         }
     }
 

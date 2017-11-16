@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Configuration status="WARN" monitorInterval="60">
     <properties>
-        <property name="LOG_HOME">${sys:catalina.home}/server</property>
+        <!--<property name="LOG_HOME">${sys:catalina.home}/server</property>-->
         <property name="FileName">mylog.log</property>
     </properties>
 
@@ -29,12 +29,7 @@
         </RollingRandomAccessFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.xyz.Log4j2Test01" level="info" additivity="true">
-            <AppenderRef ref="File"/>
-            <AppenderRef ref="roll_access_file"/>
-        </Logger>
-
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
-    <script src="/shiro-web/resources/js/main/login.js"></script>
+    <title>注册</title>
 </head>
 <body>
-    <form method="post" action="/shiro-web/login">
+    <form method="post" action="/shiro-web/register">
         <table>
             <tr>
-               <td>用户名</td>
-               <td>
-                   <input type="text" name="username"/>
-               </td>
+                <td>用户名</td>
+                <td>
+                    <input type="text" name="username"/>
+                </td>
             </tr>
             <tr>
                 <td>密码</td>
@@ -21,11 +20,8 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     <input type="submit" name="提交"/>
-                </td>
-                <td>
-                    <a href="/shiro-web/login">注册</a>
                 </td>
             </tr>
         </table>
