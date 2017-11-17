@@ -73,8 +73,6 @@ public final class JdbcHelper {
         try {
             rs = query(sql, params);
             int rows = getResultSetRows(rs);
-            if(rows == 0)
-                throw new SQLException("no result");
             List<ColumnProperties> columnProperties = getColumnProperties(rs);
             for(int i = 0; i < rows; i++) {
                 T t = toEntity(entity, columnProperties, rs);

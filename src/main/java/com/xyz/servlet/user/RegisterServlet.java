@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import static com.xyz.common.URLPath.getUrl;
 
 @WebServlet(name = "Register", value = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -32,5 +33,6 @@ public class RegisterServlet extends HttpServlet {
         user.setUsername(username);
         user.setPassword(password);
         userService.register(user);
+        request.getRequestDispatcher(getUrl("main/login")).forward(request, response);
     }
 }

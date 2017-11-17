@@ -1,4 +1,4 @@
-package com.xyz.servlet.user;
+package com.xyz.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import static com.xyz.common.URLPath.getUrl;
 
-@WebServlet(name = "ToLogin", value = "/toLogin")
-public class ToLogin extends HttpServlet {
+@WebServlet(name = "Unauthorized", value = "/unauthorized")
+public class Unauthorized extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
+        request.getRequestDispatcher(getUrl("unauthorized")).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(getUrl("main/login")).forward(request, response);
+        this.doPost(request, response);
     }
 }

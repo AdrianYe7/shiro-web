@@ -11,10 +11,10 @@ import static com.xyz.common.URLPath.getUrl;
 @WebServlet(name = "ToRegister", value = "/toRegister")
 public class ToRegister extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher(getUrl("user/register"));
+        request.getRequestDispatcher(getUrl("main/register")).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
+        this.doPost(request, response);
     }
 }

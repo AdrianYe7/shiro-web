@@ -37,7 +37,12 @@ public class LoginServlet extends HttpServlet {
         }
 
         if(subject.isAuthenticated()) {
-            request.getRequestDispatcher(getUrl("user/index")).forward(request, response);
+            if(subject.hasRole("admin"))
+                request.getRequestDispatcher(getUrl("main/admin")).forward(request, response);
+            else if(subject.hasRole("common"))
+                request.getRequestDispatcher(getUrl("main/index")).forward(request, response);
+            else if(subject.hasRole("test"))
+                request.getRequestDispatcher(getUrl("main/test")).forward(request, response);
         }
     }
 
